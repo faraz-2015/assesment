@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity,FlatList } from "react-native"
 import Constants from 'expo-constants';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Tabs from './footerTabs'
 
 
 const Challenge = ({navigation}) =>{
@@ -77,6 +78,7 @@ const Challenge = ({navigation}) =>{
            
         )}
         />
+        <Tabs/>
 
  </View>
     )

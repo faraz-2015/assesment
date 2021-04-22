@@ -1,54 +1,99 @@
+
 import * as React from 'react';
-import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// function HomeScreen() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Home!</Text>
-//     </View>
-//   );
-// }
+import
+ MaterialCommunityIcons
+from 'react-native-vector-icons/MaterialCommunityIcons';
+import 'react-native-gesture-handler';
 
-// function SettingsScreen() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Settings!</Text>
-//     </View>
-//   );
-// }
+import {
+  createBottomTabNavigator
+} from '@react-navigation/bottom-tabs';
+import { View, Text, StyleSheet, TouchableOpacity,FlatList } from "react-native";
+import
+Feather
+from 'react-native-vector-icons/Feather';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+// MaterialCommunityIcons
+// from 'react-native-vector-icons/MaterialCommunityIcons';
+import
+Entypo
+from 'react-native-vector-icons/Entypo';
+
+
+
 
 const Tab = createBottomTabNavigator();
 
-export default function Footer() {
+function HomeStack() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === 'Home') {
-              iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle-outline';
-            } else if (route.name === 'Settings') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
-            }
-
-            // You can return any component that you like here!
-            // return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
-        }}
-      >
-        <Tab.Screen name="Home" component={''} />
-        <Tab.Screen name="Settings" component={''} />
-      </Tab.Navigator>
-    </NavigationContainer>
+      <View>
+        <Text>this is stack</Text>
+      </View>
   );
 }
+
+function SettingsStack() {
+  return (
+    <View>
+        <Text>this is stack</Text>
+      </View>
+  );
+}
+
+const  Tabs = ()  =>{
+  return (
+      <Tab.Navigator
+        initialRouteName="Feed"
+        tabBarOptions={{
+          activeTintColor: '#42f44b',
+        }}>
+        <Tab.Screen
+          name="HomeStack"
+          component={HomeStack}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="home"
+                color='#b1b1b1'
+                size={30}
+              />
+            ),
+          }}  />
+        <Tab.Screen
+          name="SettingsStack"
+          component={''}
+          options={{
+            tabBarLabel: 'Settings',
+            tabBarIcon: ({ color, size }) => (
+              <Feather
+                name="message-circle"
+                color='#b1b1b1'
+                size={30}
+              />
+            ),
+          }} />
+          <Tab.Screen
+          name="search"
+          component={'something'}
+          options={{
+            tabBarLabel: 'Settings',
+            tabBarIcon: ({ color, size }) => (
+              <AntDesign name='search1' size={30} color='#b1b1b1'/>
+            ),
+          }} />
+          <Tab.Screen
+          name="menu"
+          component={''}
+          options={{
+            tabBarLabel: 'Settings',
+            tabBarIcon: ({ color, size }) => (
+              <Entypo name='menu' size={30} color='#b1b1b1'/>
+            ),
+          }} />
+      </Tab.Navigator>
+  );
+}
+export default Tabs;
